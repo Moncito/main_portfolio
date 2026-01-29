@@ -136,8 +136,8 @@ export const testimonials = [
 export const companies = [
     {
         id: 1,
-        name: "cloudinary",
-        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cloudinary/cloudinary-original.svg",
+        name: "firebase",
+        img: "/svg/firebase.svg",
         nameImg: "",
     },
     {
@@ -148,8 +148,8 @@ export const companies = [
     },
     {
         id: 3,
-        name: "hostinger",
-        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/hostinger/hostinger-original.svg",
+        name: "vercel",
+        img: "/svg/vercel.svg",
         nameImg: "",
     },
 ];
