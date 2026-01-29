@@ -193,12 +193,12 @@ export const socialMedia = [
     },
     {
         id: 2,
-        img: ICONS.twitter,
-        link: "#"
+        img: "/images/threads.png",
+        link: "https://www.threads.com/@saints_aintdead"
     },
     {
         id: 3,
         img: ICONS.linkedin,
-        link: "#"
+        link: "https://www.linkedin.com/in/moncito-glenn-hernandez-238605261/"
     },
 ];
