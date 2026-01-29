@@ -24,7 +24,7 @@ const Footer = () => {
                             {socialMedia.map((profile) => (
                                 <a
                                     key={profile.id}
-                                    href="#"
+                                    href={profile.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className='group flex items-center gap-2'

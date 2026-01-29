@@ -69,39 +69,52 @@ export const gridItems = [
     },
 ];
 
+const ICONS = {
+    next: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg",
+    tailwind: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
+    typescript: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
+    react: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+    gsap: "https://cdn.worldvectorlogo.com/logos/gsap.svg",
+    framer: "https://raw.githubusercontent.com/devicons/devicon/master/icons/framer/framer-original.svg",
+    three: "https://raw.githubusercontent.com/devicons/devicon/master/icons/threejs/threejs-original.svg",
+    sql: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
+    github: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
+    linkedin: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg",
+    twitter: "https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg"
+}
 
 export const projects = [
     {
         id: 1,
-        title: "3D Solar System Planets",
-        des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-        img: "/p1.svg",
-        iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-        link: "https://github.com/adrianhajdin?tab=repositories",
+        title: "Luwas Travel & Tours",
+        des: "A comprehensive travel agency platform with dynamic booking and itinerary management.",
+        img: "/images/proj2.png",
+        iconLists: [ICONS.next, ICONS.tailwind, ICONS.typescript,],
+        link: "https://luwas-travel.tours/",
     },
     {
         id: 2,
-        title: "Yoom - Video Conferencing App",
-        des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-        img: "/p2.svg",
-        iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-        link: "https://github.com/adrianhajdin?tab=repositories",
+        title: "AI Mock Interview",
+        des: "Intelligent career preparation platform utilizing AI to simulate realistic interview environments.",
+        img: "/images/proj1.png",
+        iconLists: [ICONS.react, ICONS.tailwind, ICONS.typescript, ICONS.three,],
+        link: "https://ai-mock-interview-swart-phi.vercel.app/",
     },
     {
         id: 3,
-        title: "AI Image SaaS - Canva Application",
-        des: "A REAL Software-as-a-Service app with AI features and a payments system using the latest tech stack.",
-        img: "/p3.svg",
-        iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-        link: "https://github.com/adrianhajdin?tab=repositories",
+        title: "Luwas Mobile App",
+        des: "React Native companion to Luwas Travel, providing seamless booking on the go.",
+        img: "/images/proj3.png",
+        iconLists: [ICONS.react, ICONS.typescript, ICONS.framer],
+        link: "https://github.com/Moncito/luwas-mobile",
     },
     {
         id: 4,
-        title: "Animated Apple iPhone 3D Website",
-        des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-        img: "/p4.svg",
-        iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-        link: "https://github.com/adrianhajdin?tab=repositories",
+        title: "Dental Appointment Hub",
+        des: "Automated dental appointment system with SQL-backed scheduling and patient management.",
+        img: "/images/proj4.png",
+        iconLists: [ICONS.next, ICONS.tailwind,],
+        link: "https://dental-sql.vercel.app/",
     },
 ];
 
@@ -124,32 +137,20 @@ export const companies = [
     {
         id: 1,
         name: "cloudinary",
-        img: "/cloud.svg",
-        nameImg: "/cloudName.svg",
+        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cloudinary/cloudinary-original.svg",
+        nameImg: "",
     },
     {
         id: 2,
         name: "appwrite",
-        img: "/app.svg",
-        nameImg: "/appName.svg",
+        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/appwrite/appwrite-original.svg",
+        nameImg: "",
     },
     {
         id: 3,
         name: "hostinger",
-        img: "/host.svg",
-        nameImg: "/hostName.svg",
-    },
-    {
-        id: 4,
-        name: "stream",
-        img: "/s.svg",
-        nameImg: "/streamName.svg",
-    },
-    {
-        id: 5,
-        name: "docker",
-        img: "/dock.svg",
-        nameImg: "/dockerName.svg",
+        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/hostinger/hostinger-original.svg",
+        nameImg: "",
     },
 ];
 
@@ -159,42 +160,31 @@ export const workExperience = [
         title: "Frontend Engineer Intern",
         desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
         className: "md:col-span-2",
-        thumbnail: "/exp1.svg",
+        thumbnail: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
     },
     {
         id: 2,
         title: "Mobile App Dev - JSM Tech",
         desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
         className: "md:col-span-2",
-        thumbnail: "/exp2.svg",
-    },
-    {
-        id: 3,
-        title: "Freelance App Dev Project",
-        desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-        className: "md:col-span-2",
-        thumbnail: "/exp3.svg",
-    },
-    {
-        id: 4,
-        title: "Lead Frontend Developer",
-        desc: "Developed and maintained user-facing features using modern frontend technologies.",
-        className: "md:col-span-2",
-        thumbnail: "/exp4.svg",
+        thumbnail: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
     },
 ];
 
 export const socialMedia = [
     {
         id: 1,
-        img: "/git.svg",
+        img: ICONS.github,
+        link: "https://github.com/Moncito"
     },
     {
         id: 2,
-        img: "/twit.svg",
+        img: ICONS.twitter,
+        link: "#"
     },
     {
         id: 3,
-        img: "/link.svg",
+        img: ICONS.linkedin,
+        link: "#"
     },
 ];

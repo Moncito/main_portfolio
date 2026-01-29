@@ -9,6 +9,7 @@ import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
+import CustomCursor from "@/components/CustomCursor";
 import Lenis from "@studio-freight/lenis";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <main className="relative bg-[#f8f8f8] w-full min-h-screen overflow-x-hidden">
+      <CustomCursor />
       <div className="fixed inset-0 fractal-noise pointer-events-none z-[9998]" />
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 
