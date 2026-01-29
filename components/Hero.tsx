@@ -141,7 +141,7 @@ const Hero = () => {
                     <div className="floating-card card-3 absolute inset-0 bg-white rounded-2xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-black/5 overflow-hidden translate-x-8 translate-y-8 p-1">
                         <div className="w-full h-full rounded-xl overflow-hidden bg-[#f8f8f8] flex items-center justify-center">
                             <img
-                                src="/images/sainty.jpg"
+                                src="/images/pfp.jpg"
                                 alt="Sainty Hernandez"
                                 className="w-full h-full object-cover"
                             />

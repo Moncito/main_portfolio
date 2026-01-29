@@ -157,17 +157,31 @@ export const companies = [
 export const workExperience = [
     {
         id: 1,
-        title: "Frontend Engineer Intern",
-        desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+        title: "Outreach Consultant",
+        desc: "Strategic market expansion and client acquisition infrastructure designer.",
         className: "md:col-span-2",
-        thumbnail: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+        thumbnail: "/images/workedge.jpg",
     },
     {
         id: 2,
-        title: "Mobile App Dev - JSM Tech",
-        desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+        title: "Outreach Manager",
+        desc: "Led cross-functional teams to scale reach and optimize conversion funnels.",
         className: "md:col-span-2",
-        thumbnail: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+        thumbnail: "/images/workedge.jpg",
+    },
+    {
+        id: 3,
+        title: "Freelance Fullstack Developer",
+        desc: "Architecting end-to-end digital solutions with modern frameworks and robust backends.",
+        className: "md:col-span-2",
+        thumbnail: ICONS.next,
+    },
+    {
+        id: 4,
+        title: "Freelance Mobile Developer",
+        desc: "Crafting native and cross-platform mobile experiences with a focus on motion and performance.",
+        className: "md:col-span-1",
+        thumbnail: ICONS.react,
     },
 ];
 
