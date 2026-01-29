@@ -122,13 +122,13 @@ const Hero = () => {
             <div className="flex-1 flex flex-col items-center justify-center relative w-full mt-20">
                 <h1
                     ref={titleTopRef}
-                    className="text-[15vw] leading-[0.75] font-black font-syne uppercase tracking-tighter text-black select-none z-10"
+                    className="text-[18vw] md:text-[15vw] leading-[0.75] font-black font-syne uppercase tracking-tighter text-black select-none z-10"
                 >
                     Design
                 </h1>
 
                 {/* Scroll Triggered Card Stack */}
-                <div ref={cardStackRef} className="relative w-72 h-96 md:w-[450px] md:h-[600px] z-30 my-[-10vw]">
+                <div ref={cardStackRef} className="relative w-64 h-80 md:w-[450px] md:h-[600px] z-30 my-[-8vw]">
                     {/* Background Cards */}
                     <div className="floating-card card-1 absolute inset-0 bg-grey-200/20 rounded-2xl border border-black/5 shadow-xl flex items-center justify-center overflow-hidden">
                         <div className="w-full h-full bg-[#f0f0f0] fractal-noise opacity-20" />
@@ -142,7 +142,7 @@ const Hero = () => {
                         <div className="w-full h-full rounded-xl overflow-hidden bg-[#f8f8f8] flex items-center justify-center">
                             <img
                                 src="/images/sainty.jpg"
-                                alt="Modern Architecture"
+                                alt="Sainty Hernandez"
                                 className="w-full h-full object-cover"
                             />
                         </div>
@@ -161,7 +161,7 @@ const Hero = () => {
 
                 <h1
                     ref={titleBottomRef}
-                    className="text-[13vw] leading-[0.75] font-black font-syne uppercase tracking-tighter text-black select-none z-10"
+                    className="text-[18vw] md:text-[12vw] leading-[0.75] font-black font-syne uppercase tracking-tighter text-black select-none z-10"
                 >
                     System
                 </h1>

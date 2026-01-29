@@ -33,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative bg-[#f8f8f8] w-full min-h-screen">
+    <main className="relative bg-[#f8f8f8] w-full min-h-screen overflow-x-hidden">
       <div className="fixed inset-0 fractal-noise pointer-events-none z-[9998]" />
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 

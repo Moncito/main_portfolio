@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,63 +46,110 @@ export const BentoGridItem = ({
     titleClassName?: string;
     spareImg?: string;
 }) => {
+    const itemRef = useRef<HTMLDivElement>(null);
+    const imgRef = useRef<HTMLImageElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        gsap.fromTo(`.bento-item-${id}`, {
+        const el = itemRef.current;
+        if (!el) return;
+
+        // Entrance animation
+        gsap.fromTo(el, {
             opacity: 0,
-            y: 50,
+            y: 100,
         }, {
             opacity: 1,
             y: 0,
-            duration: 1,
-            ease: "power2.out",
+            duration: 1.2,
+            ease: "power4.out",
             scrollTrigger: {
-                trigger: `.bento-item-${id}`,
+                trigger: el,
                 start: "top 95%",
             }
         });
+
+        // Parallax effect on image
+        if (imgRef.current) {
+            gsap.to(imgRef.current, {
+                y: -30,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            });
+        }
+
+        // Subtle tilt effect on mouse move
+        const handleMouseMove = (e: MouseEvent) => {
+            const { left, top, width, height } = el.getBoundingClientRect();
+            const x = (e.clientX - left) / width - 0.5;
+            const y = (e.clientY - top) / height - 0.5;
+
+            gsap.to(el, {
+                rotationY: x * 10,
+                rotationX: -y * 10,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        };
+
+        const handleMouseLeave = () => {
+            gsap.to(el, {
+                rotationY: 0,
+                rotationX: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        };
+
+        el.addEventListener("mousemove", handleMouseMove);
+        el.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+            el.removeEventListener("mousemove", handleMouseMove);
+            el.removeEventListener("mouseleave", handleMouseLeave);
+        };
     }, [id]);
 
     return (
         <div
+            ref={itemRef}
             className={cn(
-                `bento-item-${id} row-span-1 relative overflow-hidden rounded-2xl group/bento transition duration-500 justify-between flex flex-col space-y-4 border border-black/[0.05] bg-white shadow-sm hover:shadow-xl hover:border-black/10`,
+                `bento-item-${id} row-span-1 relative overflow-hidden rounded-3xl group/bento transition duration-500 justify-between flex flex-col space-y-4 border border-black/[0.05] bg-white shadow-sm hover:shadow-2xl perspective-1000`,
                 className
             )}
         >
-            <div className={`${id === 6 && "flex justify-center"} h-full min-h-[250px]`}>
-                <div className="w-full h-full absolute">
+            <div className={`${id === 6 && "flex justify-center"} h-full min-h-[300px]`}>
+                <div className="w-full h-full absolute top-0 left-0 overflow-hidden">
                     {img && (
                         <img
+                            ref={imgRef}
                             src={img}
                             alt={img}
-                            className={cn(imgClassName, "object-cover object-center group-hover:scale-110 transition-transform duration-1000 grayscale")}
-                        />
-                    )}
-                </div>
-                <div
-                    className={`absolute right-0 bottom-0 ${id === 5 && "w-full opacity-60"
-                        } `}
-                >
-                    {spareImg && (
-                        <img
-                            src={spareImg}
-                            alt={spareImg}
-                            className="object-cover object-center w-full h-full grayscale opacity-20"
+                            className={cn(imgClassName, "object-cover object-center w-full h-[120%] -top-[10%] absolute grayscale hover:grayscale-0 transition-all duration-1000")}
                         />
                     )}
                 </div>
 
+                {/* Subtle Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60 pointer-events-none" />
+
                 <div
+                    ref={textRef}
                     className={cn(
                         titleClassName,
-                        "group-hover/bento:translate-x-2 transition duration-500 relative h-full flex flex-col px-8 p-8 lg:p-12 justify-end"
+                        "group-hover/bento:translate-x-2 transition duration-500 relative h-full flex flex-col px-8 p-8 lg:p-12 justify-end z-10"
                     )}
                 >
-                    <div className="font-syne font-black text-[10px] uppercase tracking-[0.2em] text-black/40 z-10 mb-2">
-                        {description}
+                    <div className="font-syne font-black text-[10px] uppercase tracking-[0.3em] text-black/40 mb-3 bg-white/80 backdrop-blur-sm self-start px-2 py-1 rounded">
+                        {description || "Insight"}
                     </div>
                     <div
-                        className={`font-syne text-2xl lg:text-3xl font-black z-10 uppercase leading-none text-black tracking-tighter`}
+                        className={`font-syne text-2xl lg:text-4xl font-black z-10 uppercase leading-[0.9] text-black tracking-tighter`}
                     >
                         {title}
                     </div>
