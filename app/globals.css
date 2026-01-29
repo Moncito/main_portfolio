@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-syne: var(--font-syne);
+  --font-serif: var(--font-playfair);
+
+  --color-black-100: #000000;
+  --color-black-200: #1a1a1a;
+  --color-white-100: #f8f8f8;
+  /* Very clean off-white */
+  --color-white-200: #eeeeee;
+  --color-grey-100: #666666;
+  --color-grey-200: #999999;
+}
+
+:root {
+  --background: #f8f8f8;
+  --foreground: #000000;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-syne {
+  font-family: var(--font-syne), sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-black/5;
+  }
+
+  body {
+    @apply bg-[#f8f8f8] text-[#000000];
+  }
+}
+
+@layer utilities {
+  .bg-grid-minimal {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40' fill='none' stroke='black' stroke-opacity='0.03'%3E%3Cpath d='M0 .5H39.5V40'/%3E%3C/svg%3E");
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-black/5;
+  }
+
+  .fractal-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+}
