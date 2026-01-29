@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: "Digital Architect & Creative Developer",
 };
 
+import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${inter.variable} ${playfair.variable} font-sans antialiased bg-[#f5f5f7] text-[#0a0a0a]`}
       >
-        {children}
+        <SmoothScrollWrapper>
+          {children}
+        </SmoothScrollWrapper>
       </body>
     </html>
   );

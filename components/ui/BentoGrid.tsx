@@ -54,55 +54,71 @@ export const BentoGridItem = ({
         const el = itemRef.current;
         if (!el) return;
 
-        // Entrance animation
-        gsap.fromTo(el, {
-            opacity: 0,
-            y: 100,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power4.out",
-            scrollTrigger: {
-                trigger: el,
-                start: "top 95%",
-            }
-        });
-
-        // Parallax effect on image
-        if (imgRef.current) {
-            gsap.to(imgRef.current, {
-                y: -30,
-                ease: "none",
+        const ctx = gsap.context(() => {
+            // Entrance animation
+            gsap.fromTo(el, {
+                opacity: 0,
+                y: 50,
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
                 scrollTrigger: {
                     trigger: el,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true,
+                    start: "top 95%",
+                    toggleActions: "play none none reverse"
                 }
             });
-        }
 
-        // Subtle tilt effect on mouse move
+            // Parallax effect on image - optimized scrub
+            if (imgRef.current) {
+                gsap.to(imgRef.current, {
+                    y: -40,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 0.5, // Added slight scrub for smoothness
+                    }
+                });
+            }
+        }, el);
+
+        // Subtle tilt effect on mouse move - optimized with requestAnimationFrame logic
+        let mouseX = 0;
+        let mouseY = 0;
+        let rafId: number;
+
         const handleMouseMove = (e: MouseEvent) => {
             const { left, top, width, height } = el.getBoundingClientRect();
-            const x = (e.clientX - left) / width - 0.5;
-            const y = (e.clientY - top) / height - 0.5;
+            mouseX = (e.clientX - left) / width - 0.5;
+            mouseY = (e.clientY - top) / height - 0.5;
 
+            if (!rafId) {
+                rafId = requestAnimationFrame(updateTilt);
+            }
+        };
+
+        const updateTilt = () => {
             gsap.to(el, {
-                rotationY: x * 10,
-                rotationX: -y * 10,
-                duration: 0.5,
-                ease: "power2.out"
+                rotationY: mouseX * 8, // Reduced intensity for stability
+                rotationX: -mouseY * 8,
+                duration: 0.8,
+                ease: "power2.out",
+                overwrite: 'auto'
             });
+            rafId = 0;
         };
 
         const handleMouseLeave = () => {
+            if (rafId) cancelAnimationFrame(rafId);
             gsap.to(el, {
                 rotationY: 0,
                 rotationX: 0,
-                duration: 0.5,
-                ease: "power2.out"
+                duration: 1,
+                ease: "elastic.out(1, 0.3)"
             });
         };
 
@@ -110,8 +126,10 @@ export const BentoGridItem = ({
         el.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
+            ctx.revert(); // Clean up all GSAP
             el.removeEventListener("mousemove", handleMouseMove);
             el.removeEventListener("mouseleave", handleMouseLeave);
+            if (rafId) cancelAnimationFrame(rafId);
         };
     }, [id]);
 
@@ -119,24 +137,24 @@ export const BentoGridItem = ({
         <div
             ref={itemRef}
             className={cn(
-                `bento-item-${id} row-span-1 relative overflow-hidden rounded-3xl group/bento transition duration-500 justify-between flex flex-col space-y-4 border border-black/[0.05] bg-white shadow-sm hover:shadow-2xl perspective-1000`,
+                `bento-item-${id} row-span-1 relative overflow-hidden rounded-3xl group/bento transition-all duration-500 justify-between flex flex-col space-y-4 border border-black/[0.05] bg-white shadow-sm hover:shadow-2xl perspective-1000 will-change-transform`,
                 className
             )}
         >
             <div className={`${id === 6 && "flex justify-center"} h-full min-h-[300px]`}>
-                <div className="w-full h-full absolute top-0 left-0 overflow-hidden">
+                <div className="w-full h-full absolute top-0 left-0 overflow-hidden pointer-events-none">
                     {img && (
                         <img
                             ref={imgRef}
                             src={img}
                             alt={img}
-                            className={cn(imgClassName, "object-cover object-center w-full h-[120%] -top-[10%] absolute grayscale hover:grayscale-0 transition-all duration-1000")}
+                            className={cn(imgClassName, "object-cover object-center w-full h-[130%] -top-[15%] absolute grayscale group-hover/bento:grayscale-0 transition-all duration-700 will-change-transform")}
                         />
                     )}
                 </div>
 
                 {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-60 pointer-events-none" />
 
                 <div
                     ref={textRef}
