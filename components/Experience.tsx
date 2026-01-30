@@ -117,39 +117,39 @@ const Experience = () => {
     }, []);
 
     return (
-        <section className='py-24 md:py-40 relative bg-[#f8f8f8] overflow-hidden' id="experience" ref={sectionRef}>
+        <section className='py-16 md:py-40 relative bg-[#f8f8f8] overflow-hidden' id="experience" ref={sectionRef}>
             {/* Minimalist Grid Background */}
             <div className="absolute inset-0 bg-grid-minimal pointer-events-none opacity-40" />
 
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-10 mb-20 md:mb-32">
-                <span className="font-syne font-black text-[10px] uppercase tracking-[0.8em] text-black/30 mb-4 px-3 border-l-4 border-black">Career Track</span>
-                <h1 className='text-[9vw] md:text-[8vw] font-black uppercase font-syne tracking-tighter leading-[0.85] md:leading-[0.8]'>
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-10 mb-12 md:mb-32">
+                <span className="font-syne font-black text-[10px] uppercase tracking-[0.8em] text-black/30 mb-3 md:mb-4 px-3 border-l-4 border-black block">Career Track</span>
+                <h1 className='text-[9vw] sm:text-[10vw] md:text-[8vw] font-black uppercase font-syne tracking-tighter leading-[0.9] md:leading-[0.8] mt-2'>
                     Strategic <br /> <span className='text-black/10 italic font-serif lowercase'>History</span>
                 </h1>
             </div>
 
-            <div className="flex flex-col w-full max-w-7xl mx-auto px-6 md:px-10">
+            <div className="flex flex-col w-full max-w-7xl mx-auto px-4 md:px-10">
                 {workExperience.map((card, i) => (
                     <div
                         key={card.id}
-                        className="exp-item group relative w-full py-12 md:py-24 flex flex-col items-start gap-6 md:gap-8 border-b border-black/5 last:border-0"
+                        className="exp-item group relative w-full py-8 md:py-24 flex flex-col items-start gap-4 md:gap-8 border-b border-black/5 last:border-0"
                     >
                         {/* Numbering & Indicator */}
-                        <div className="flex items-center gap-6 exp-num">
-                            <span className="font-syne font-black text-5xl md:text-6xl text-black/5 group-hover:text-black transition-colors duration-500">
+                        <div className="flex items-center gap-3 md:gap-6 exp-num">
+                            <span className="font-syne font-black text-3xl md:text-6xl text-black/5 group-hover:text-black transition-colors duration-500">
                                 0{i + 1}
                             </span>
-                            <div className="exp-line h-[1px] w-16 md:w-24 bg-black/10 origin-left scale-x-0" />
+                            <div className="exp-line h-[1px] w-12 md:w-24 bg-black/10 origin-left scale-x-0" />
                         </div>
 
                         {/* Title - Controlled Impact */}
-                        <div className="exp-title w-full flex flex-col md:flex-row md:items-end justify-between gap-6">
-                            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black font-syne uppercase tracking-tighter text-black leading-[0.9] max-w-4xl transition-transform group-hover:translate-x-4 duration-700">
+                        <div className="exp-title w-full flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
+                            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black font-syne uppercase tracking-tighter text-black leading-[0.95] md:leading-[0.9] max-w-4xl transition-transform group-hover:translate-x-4 duration-700">
                                 {card.title}
                             </h2>
 
                             {/* Icon */}
-                            <div className="exp-visual w-16 h-16 md:w-28 md:h-28 bg-white rounded-2xl border border-black/5 flex items-center justify-center p-4 md:p-5 shadow-xl group-hover:rotate-12 transition-transform duration-500 shrink-0 self-start md:self-auto">
+                            <div className="exp-visual w-14 h-14 md:w-28 md:h-28 bg-white rounded-xl md:rounded-2xl border border-black/5 flex items-center justify-center p-3 md:p-5 shadow-xl group-hover:rotate-12 transition-transform duration-500 shrink-0 self-start md:self-auto">
                                 <img
                                     src={card.thumbnail}
                                     alt={card.title}
@@ -159,8 +159,8 @@ const Experience = () => {
                         </div>
 
                         {/* Description - High Contrast */}
-                        <div className="exp-desc max-w-3xl mt-2 md:mt-4">
-                            <p className="font-syne text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-tight text-black/30 group-hover:text-black transition-colors duration-500 leading-tight">
+                        <div className="exp-desc max-w-3xl mt-1 md:mt-4">
+                            <p className="font-syne text-sm sm:text-base md:text-2xl lg:text-3xl font-black uppercase tracking-tight text-black/30 group-hover:text-black transition-colors duration-500 leading-snug md:leading-tight">
                                 {card.desc}
                             </p>
                         </div>
@@ -174,11 +174,11 @@ const Experience = () => {
             </div>
 
             {/* Bottom Details */}
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-10 mt-32 md:mt-40 flex flex-col md:flex-row justify-between items-center md:items-end gap-10 md:gap-0 opacity-20 text-center md:text-left">
-                <div className="font-syne text-[10px] font-black uppercase tracking-[0.5em] max-w-[250px] leading-relaxed">
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-10 mt-16 md:mt-40 flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-0 opacity-20 text-center md:text-left">
+                <div className="font-syne text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] max-w-[250px] leading-relaxed">
                     A legacy of technical architecture and strategic leadership.
                 </div>
-                <div className="text-6xl md:text-8xl font-black font-syne text-black/5 leading-none md:translate-y-1/3">
+                <div className="text-4xl md:text-8xl font-black font-syne text-black/5 leading-none md:translate-y-1/3">
                     ARCHIVE
                 </div>
             </div>
