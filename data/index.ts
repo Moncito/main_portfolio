@@ -121,7 +121,7 @@ export const projects = [
 export const testimonials = [
     {
         quote:
-            "Collaborating with Sainty was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. His expertise in frontend development truly brought our vision to life.",
+            "Working with Sainty was a great experience. He’s The Best, reliable, and delivered high-quality frontend work that brought our vision to life.",
         name: "Michael Johnson",
         title: "Director of AlphaStream Technologies",
     },
@@ -157,7 +157,7 @@ export const companies = [
 export const workExperience = [
     {
         id: 1,
-        title: "Outreach Consultant",
+        title: "Outreach Consult...",
         desc: "Strategic market expansion and client acquisition infrastructure designer.",
         className: "md:col-span-2",
         thumbnail: "/images/workedge.jpg",

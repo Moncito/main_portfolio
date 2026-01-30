@@ -27,6 +27,27 @@ body {
   padding: 0;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body,
+html {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide default cursor globally - use custom cursor only */
+* {
+  cursor: none !important;
+}
+
+
 h1,
 h2,
 h3,

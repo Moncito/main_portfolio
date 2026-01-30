@@ -20,28 +20,60 @@ const Clients = () => {
 
                 gsap.to(marquee, {
                     x: -totalWidth / 2,
-                    duration: 25, // Slower for readability
+                    duration: 30,
                     ease: 'none',
                     repeat: -1,
                 });
             }
 
-            // Testimonial Reveal
-            gsap.utils.toArray('.testimonial-row').forEach((row: any, i) => {
-                gsap.fromTo(row, {
-                    x: i % 2 === 0 ? -50 : 50,
-                    opacity: 0
-                }, {
-                    x: 0,
-                    opacity: 1,
+            // Testimonial Scroll Animations - Optimized for visibility
+            const testimonials = gsap.utils.toArray('.testimonial-card');
+
+            testimonials.forEach((card: any, i) => {
+                const quote = card.querySelector('.quote-text');
+                const author = card.querySelector('.author-info');
+
+                // Create timeline for each testimonial
+                const tl = gsap.timeline({
                     scrollTrigger: {
-                        trigger: row,
-                        start: "top 95%",
-                        end: "top 60%",
-                        scrub: 1,
+                        trigger: card,
+                        start: "top 85%",
+                        end: "top 30%",
+                        toggleActions: "play none none reverse",
+                        markers: false, // Set to true to debug
                     }
                 });
+
+                // Stagger the entrance
+                tl.fromTo(quote,
+                    {
+                        y: 60,
+                        opacity: 0,
+                        scale: 0.95
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: 1,
+                        ease: "power3.out"
+                    }
+                )
+                    .fromTo(author,
+                        {
+                            y: 30,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power2.out"
+                        },
+                        "-=0.5"
+                    );
             });
+
         }, sectionRef);
 
         return () => ctx.revert();
@@ -52,40 +84,57 @@ const Clients = () => {
             {/* Minimalist Grid Background */}
             <div className="absolute inset-0 bg-grid-minimal pointer-events-none opacity-40" />
 
-            {/* Massive Heading */}
-            <div className="w-full max-w-7xl px-6 md:px-10 mb-20 md:mb-32">
-                <span className="font-syne font-black text-[10px] uppercase tracking-[0.5em] text-black/40 mb-4 px-2 border-l-2 border-black">Endorsement</span>
-                <h1 className='text-[15vw] md:text-[8vw] font-black uppercase font-syne tracking-tighter leading-[0.8]'>
+            {/* Section Header - Mobile Optimized */}
+            <div className="w-full max-w-7xl px-6 md:px-10 mb-16 md:mb-32">
+                <span className="font-syne font-black text-[10px] uppercase tracking-[0.5em] text-black/40 mb-4 px-2 border-l-2 border-black inline-block">
+                    Endorsement
+                </span>
+                <h1 className='text-[11vw] md:text-[8vw] font-black uppercase font-syne tracking-tighter leading-[1.2] md:leading-[0.8]'>
                     Verified <br /> <span className='text-black/10'>Impact</span>
                 </h1>
             </div>
 
-            {/* Kinetic Testimonials */}
-            <div className="w-full flex flex-col gap-12 md:gap-40">
+            {/* Testimonials Grid - Redesigned for Mobile */}
+            <div className="w-full max-w-7xl px-6 md:px-10 flex flex-col gap-16 md:gap-32">
                 {testimonials.map((item, idx) => (
                     <div
                         key={idx}
-                        className={`testimonial-row flex flex-col ${idx % 2 === 0 ? 'items-start px-6 md:pl-[5vw]' : 'items-end px-6 md:pr-[5vw]'} max-w-full`}
+                        className="testimonial-card w-full"
                     >
-                        <blockquote className={`max-w-4xl ${idx % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                            <p className="text-2xl md:text-5xl lg:text-7xl font-black font-syne uppercase tracking-tighter leading-[0.9] mb-6 md:mb-8 text-black">
-                                &quot;{item.quote.split(' ').slice(0, 12).join(' ')}...&quot;
-                            </p>
-                            <div className={`flex flex-col ${idx % 2 === 0 ? 'items-start' : 'items-end'}`}>
-                                <cite className="not-italic font-syne font-black text-xs md:text-sm uppercase tracking-widest text-black mb-1">
+                        <div className={`flex flex-col ${idx % 2 === 0 ? 'md:items-start' : 'md:items-end'} gap-6`}>
+                            {/* Quote - Mobile First Typography */}
+                            <blockquote className={`quote-text w-full md:max-w-4xl ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                                <p className="font-syne font-black uppercase tracking-tight text-black
+                                    text-[7vw] leading-[1.15]
+                                    sm:text-[5.5vw] sm:leading-[1.1]
+                                    md:text-5xl md:leading-[1.05]
+                                    lg:text-7xl lg:leading-[0.95]
+                                    mb-6 md:mb-8">
+                                    &quot;{item.quote.split(' ').slice(0, 12).join(' ')}...&quot;
+                                </p>
+                            </blockquote>
+
+                            {/* Author Info - Clear Separation */}
+                            <div className={`author-info flex flex-col gap-1 ${idx % 2 === 0 ? 'md:items-start' : 'md:items-end'}`}>
+                                <cite className="not-italic font-syne font-black text-xs md:text-sm uppercase tracking-[0.2em] text-black">
                                     {item.name}
                                 </cite>
-                                <span className="font-syne text-[8px] md:text-[10px] font-bold uppercase text-black/30 tracking-[0.3em]">
+                                <span className="font-syne text-[9px] md:text-[10px] font-medium uppercase text-black/40 tracking-[0.25em]">
                                     {item.title}
                                 </span>
                             </div>
-                        </blockquote>
+                        </div>
+
+                        {/* Divider - Visual Separation */}
+                        {idx < testimonials.length - 1 && (
+                            <div className="w-full h-[1px] bg-black/5 mt-12 md:mt-20" />
+                        )}
                     </div>
                 ))}
             </div>
 
             {/* Brutalist Logo Marquee */}
-            <div className="w-full mt-32 md:mt-60 relative">
+            <div className="w-full mt-24 md:mt-60 relative">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-black/5" />
                 <div className="absolute bottom-0 left-0 w-full h-[1px] bg-black/5" />
 
