@@ -169,8 +169,58 @@ const RecentProjects = () => {
         .rp-bracket > span::before { bottom: 16px; left: 16px; border-width: 0 0 1px 1px; }
         .rp-bracket > span::after  { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
         @media (max-width: 767px) {
-          #rp-strip { flex-direction: column !important; width: 100% !important; height: auto !important; }
-          .rp-card { width: 100% !important; min-width: unset !important; height: auto !important; }
+          #rp-wrap {
+            height: auto !important;
+            overflow: visible !important;
+          }
+          #rp-strip {
+            flex-direction: column !important;
+            width: 100% !important;
+            height: auto !important;
+            will-change: auto !important;
+          }
+          .rp-card {
+            width: 100% !important;
+            min-width: unset !important;
+            height: auto !important;
+          }
+          .rp-card-body {
+            grid-template-columns: 1fr !important;
+          }
+          .rp-img-cell {
+            position: relative !important;
+            height: 300px !important;
+            overflow: hidden !important;
+          }
+          .rp-meta-cell {
+            padding: 28px 24px !important;
+          }
+          .rp-head {
+            position: relative !important;
+            padding: 24px 20px !important;
+            background: #080808;
+          }
+          .rp-head-title {
+            font-size: 36px !important;
+          }
+          .rp-head-hint {
+            display: none !important;
+          }
+          .rp-card-topbar {
+            padding: 14px 20px !important;
+          }
+          .rp-card-bottombar {
+            padding: 10px 20px !important;
+          }
+          .rp-num {
+            font-size: 80px !important;
+          }
+          .rp-meta {
+            font-size: 28px !important;
+          }
+          #rp-progress {
+            display: none !important;
+          }
         }
       `}</style>
 
@@ -180,6 +230,7 @@ const RecentProjects = () => {
         correctly takes up space in the document flow.
       */}
       <div
+        id="rp-wrap"
         ref={wrapRef}
         style={{
           width: "100%",
@@ -192,6 +243,7 @@ const RecentProjects = () => {
         {/* Header overlay */}
         <div
           ref={headRef}
+          className="rp-head"
           style={{
             position: "absolute", top: 0, left: 0, right: 0, zIndex: 30,
             padding: "40px 48px",
@@ -205,7 +257,7 @@ const RecentProjects = () => {
               color: "rgba(255,255,255,0.2)", textTransform: "uppercase",
               display: "block", marginBottom: 12,
             }}>Selected Works</span>
-            <h2 style={{
+            <h2 className="rp-head-title" style={{
               fontSize: "clamp(52px, 7vw, 96px)", fontWeight: 900, color: "#fff",
               lineHeight: 0.85, letterSpacing: "-0.04em", textTransform: "uppercase",
             }}>
@@ -213,7 +265,7 @@ const RecentProjects = () => {
               <span style={{ color: "rgba(255,255,255,0.06)", fontStyle: "italic" }}>Files</span>
             </h2>
           </div>
-          <div style={{
+          <div className="rp-head-hint" style={{
             fontFamily: "monospace", fontSize: 10, color: "rgba(255,255,255,0.15)",
             textTransform: "uppercase", letterSpacing: "0.2em", textAlign: "right", lineHeight: 2,
           }}>
@@ -255,7 +307,7 @@ const RecentProjects = () => {
                 }}
               >
                 {/* ── Top bar ── */}
-                <div style={{
+                <div className="rp-card-topbar" style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -293,7 +345,7 @@ const RecentProjects = () => {
                 </div>
 
                 {/* ── Main body ── */}
-                <div style={{
+                <div className="rp-card-body" style={{
                   flex: 1,
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
@@ -301,7 +353,7 @@ const RecentProjects = () => {
                 }}>
 
                   {/* Left: image */}
-                  <div style={{ position: "relative", overflow: "hidden" }}>
+                  <div className="rp-img-cell" style={{ position: "relative", overflow: "hidden" }}>
                     <div
                       className="rp-img-wrap rp-bracket rp-scanlines"
                       style={{
@@ -363,7 +415,7 @@ const RecentProjects = () => {
                   </div>
 
                   {/* Right: metadata */}
-                  <div style={{
+                  <div className="rp-meta-cell" style={{
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -492,7 +544,7 @@ const RecentProjects = () => {
                 </div>
 
                 {/* ── Bottom strip ── */}
-                <div style={{
+                <div className="rp-card-bottombar" style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
