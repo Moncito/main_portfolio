@@ -110,11 +110,11 @@ export const projects = [
     },
     {
         id: 4,
-        title: "Dental Appointment Hub",
-        des: "Automated dental appointment system with SQL-backed scheduling and patient management.",
+        title: "Roomify 2.0",
+        des: "A.I First 2D Designer for Interior Design and Architecture",
         img: "/images/proj4.png",
         iconLists: [ICONS.next, ICONS.tailwind,],
-        link: "https://dental-sql.vercel.app/",
+        link: "https://roomify-omega-orpin.vercel.app/",
     },
 ];
 
