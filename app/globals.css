@@ -42,9 +42,18 @@ html {
   /* Firefox */
 }
 
-/* Hide default cursor globally - use custom cursor only */
-* {
-  cursor: none !important;
+/* Hide default cursor only on desktop-like pointers where custom cursor is enabled */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Keep native behavior on touch/coarse pointers */
+@media (hover: none), (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
 }
 
 

@@ -7,7 +7,7 @@ import {
     useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { FaHome, FaUser, FaProjectDiagram, FaComment, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaUser, FaProjectDiagram, FaComment, FaEnvelope, FaFileDownload } from "react-icons/fa";
 
 export const FloatingNav = ({
     navItems,
@@ -29,6 +29,7 @@ export const FloatingNav = ({
         switch (name.toLowerCase()) {
             case 'about': return <FaUser />;
             case 'projects': return <FaProjectDiagram />;
+            case 'resume': return <FaFileDownload />;
             case 'testimonials': return <FaComment />;
             case 'contact': return <FaEnvelope />;
             default: return <FaHome />;
@@ -52,6 +53,11 @@ export const FloatingNav = ({
     });
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, link: string) => {
+        // If it's a PDF or external link, don't prevent default
+        if (link.endsWith('.pdf') || link.startsWith('http')) {
+            return;
+        }
+
         e.preventDefault();
         const targetId = link.replace("#", "");
         const lenis = (window as any).lenis;
@@ -85,7 +91,7 @@ export const FloatingNav = ({
                     ease: [0.23, 1, 0.32, 1],
                 }}
                 className={cn(
-                    "flex max-w-fit fixed top-4 md:top-8 inset-x-0 mx-auto z-[5000] px-4 md:px-6 py-2.5 items-center justify-center space-x-4 md:space-x-10 rounded-full border border-white/20 bg-white/40 backdrop-blur-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.08)]",
+                    "flex max-w-[90vw] md:max-w-fit fixed top-4 md:top-8 inset-x-0 mx-auto z-[5000] px-4 md:px-6 py-2.5 items-center justify-center space-x-3 md:space-x-10 rounded-full border border-white/20 bg-white/40 backdrop-blur-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.08)]",
                     className
                 )}
             >
@@ -98,7 +104,7 @@ export const FloatingNav = ({
                             "relative group text-black/50 hover:text-black items-center flex space-x-1 transition-all duration-300 font-syne font-black text-[10px] uppercase tracking-[0.1em] md:tracking-[0.2em]"
                         )}
                     >
-                        <span className="block md:hidden text-lg">{navItem.icon || getIcon(navItem.name)}</span>
+                        <span className="block md:hidden text-base">{navItem.icon || getIcon(navItem.name)}</span>
                         <span className="hidden md:block">{navItem.name}</span>
 
                         {/* Underline Indicator - Desktop Only */}
@@ -108,7 +114,7 @@ export const FloatingNav = ({
 
                 <button
                     onClick={(e) => handleScroll(e as any, "#contact")}
-                    className="relative group overflow-hidden border border-black/5 text-[10px] font-black uppercase tracking-widest bg-black text-white px-4 md:px-8 py-2 md:py-2.5 rounded-full transition-all font-syne"
+                    className="relative group overflow-hidden border border-black/5 text-[10px] font-black uppercase tracking-widest bg-black text-white px-3 md:px-8 py-2 md:py-2.5 rounded-full transition-all font-syne"
                 >
                     <span className="relative z-10 group-hover:text-black group-hover:italic transition-all duration-300">
                         <span className="md:hidden">Talk</span>

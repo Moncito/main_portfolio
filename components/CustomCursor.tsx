@@ -5,10 +5,20 @@ import gsap from "gsap";
 const CustomCursor = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
     const followerRef = useRef<HTMLDivElement>(null);
-    const [isHovering, setIsHovering] = useState(false);
-    const [isOnDark, setIsOnDark] = useState(false);
+    const [isEnabled, setIsEnabled] = useState(false);
 
     useEffect(() => {
+        // Disable custom cursor on touch/coarse pointers (mobile/tablet UX).
+        const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+        const update = () => setIsEnabled(media.matches);
+        update();
+        media.addEventListener("change", update);
+        return () => media.removeEventListener("change", update);
+    }, []);
+
+    useEffect(() => {
+        if (!isEnabled) return;
+
         const cursor = cursorRef.current;
         const follower = followerRef.current;
         if (!cursor || !follower) return;
@@ -27,30 +37,20 @@ const CustomCursor = () => {
                 y: clientY,
                 duration: 0.3,
             });
-
-            // Check if cursor is over dark background (footer)
-            const elementUnderCursor = document.elementFromPoint(clientX, clientY);
-            if (elementUnderCursor) {
-                const isDarkBg = elementUnderCursor.closest('footer') ||
-                    elementUnderCursor.closest('.dark-section') ||
-                    elementUnderCursor.closest('[data-dark-bg]');
-                setIsOnDark(!!isDarkBg);
-            }
         };
 
-        const onMouseEnter = (e: any) => {
-            if (e.target.closest('a') || e.target.closest('button') || e.target.classList.contains('cursor-pointer')) {
-                setIsHovering(true);
+        const onMouseEnter = (e: MouseEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (target?.closest("a") || target?.closest("button") || target?.classList.contains("cursor-pointer")) {
                 gsap.to(follower, {
-                    scale: 3,
-                    backgroundColor: isOnDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)",
+                    scale: 2.6,
+                    backgroundColor: "rgba(255,255,255,0.12)",
                     duration: 0.3
                 });
             }
         };
 
-        const onMouseLeave = (e: any) => {
-            setIsHovering(false);
+        const onMouseLeave = () => {
             gsap.to(follower, {
                 scale: 1,
                 backgroundColor: "transparent",
@@ -67,19 +67,19 @@ const CustomCursor = () => {
             document.removeEventListener("mouseover", onMouseEnter);
             document.removeEventListener("mouseout", onMouseLeave);
         };
-    }, [isOnDark]);
+    }, [isEnabled]);
+
+    if (!isEnabled) return null;
 
     return (
         <>
             <div
                 ref={cursorRef}
-                className={`fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 hidden md:block transition-colors duration-300 ${isOnDark ? 'bg-white' : 'bg-black'
-                    }`}
+                className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 bg-white mix-blend-difference"
             />
             <div
                 ref={followerRef}
-                className={`fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 hidden md:block transition-colors duration-300 ${isOnDark ? 'border-white/20' : 'border-black/10'
-                    }`}
+                className="fixed top-0 left-0 w-10 h-10 border border-white/60 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
             />
         </>
     );

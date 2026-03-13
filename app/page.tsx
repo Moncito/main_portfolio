@@ -24,7 +24,7 @@ export default function Home() {
       <div className="flex flex-col items-center">
         <Hero />
 
-        <div className="max-w-7xl w-full px-5 sm:px-10">
+        <div className="max-w-7xl w-full px-5 sm:px-10 md:-mt-3">
           <Grid />
           <RecentProjects />
           <Clients />

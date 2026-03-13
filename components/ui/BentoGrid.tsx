@@ -89,10 +89,10 @@ export const BentoGridItem = ({
                 }
             });
 
-            // Parallax effect on image - highly optimized
-            if (imgRef.current) {
+            {/* Parallax effect on image - highly optimized */}
+            if (imgRef.current && window.innerWidth > 768) {
                 gsap.to(imgRef.current, {
-                    y: -30,
+                    y: -40,
                     ease: "none",
                     scrollTrigger: {
                         trigger: el,
@@ -100,6 +100,18 @@ export const BentoGridItem = ({
                         end: "bottom top",
                         scrub: 1,
                         invalidateOnRefresh: true,
+                    }
+                });
+            } else if (imgRef.current) {
+                // Reduced parallax for mobile to prevent overflow/gaps
+                gsap.to(imgRef.current, {
+                    y: -20,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
                     }
                 });
             }
@@ -178,34 +190,34 @@ export const BentoGridItem = ({
             )}
             style={{ transform: 'translateZ(0)' }} // Force GPU acceleration
         >
-            <div className={`${id === 6 && "flex justify-center"} h-full min-h-[300px]`}>
+            <div className={`${id === 6 && "flex justify-center"} h-full min-h-[250px] md:min-h-[300px]`}>
                 <div className="w-full h-full absolute top-0 left-0 overflow-hidden pointer-events-none">
                     {img && (
                         <img
                             ref={imgRef}
                             src={img}
                             alt={img}
-                            className={cn(imgClassName, "object-cover object-center w-full h-[130%] -top-[15%] absolute grayscale group-hover/bento:grayscale-0 transition-all duration-700")}
-                            loading="lazy" // Add lazy loading
+                            className={cn(imgClassName, "object-cover object-center w-full h-[120%] md:h-[130%] -top-[10%] md:-top-[15%] absolute grayscale group-hover/bento:grayscale-0 transition-all duration-700")}
+                            loading="lazy"
                         />
                     )}
                 </div>
 
                 {/* Subtle Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent opacity-60 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/10 to-transparent opacity-80 pointer-events-none" />
 
                 <div
                     ref={textRef}
                     className={cn(
                         titleClassName,
-                        "group-hover/bento:translate-x-2 transition duration-300 relative h-full flex flex-col px-8 p-8 lg:p-12 justify-end z-10"
+                        "group-hover/bento:translate-x-2 transition duration-300 relative h-full flex flex-col px-6 py-8 md:px-8 lg:p-12 justify-end z-10"
                     )}
                 >
-                    <div className="font-syne font-black text-[10px] uppercase tracking-[0.3em] text-black/40 mb-3 bg-white/80 backdrop-blur-sm self-start px-2 py-1 rounded">
+                    <div className="font-syne font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-black/40 mb-3 bg-white/80 backdrop-blur-sm self-start px-2 py-1 rounded">
                         {description || "Insight"}
                     </div>
                     <div
-                        className={`font-syne text-2xl lg:text-4xl font-black z-10 uppercase leading-[0.9] text-black tracking-tighter`}
+                        className={`font-syne text-xl md:text-2xl lg:text-4xl font-black z-10 uppercase leading-[0.9] text-black tracking-tighter`}
                     >
                         {title}
                     </div>
