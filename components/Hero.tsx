@@ -404,7 +404,7 @@ const Hero = () => {
                                     totalCount: "{{count}} contributions in the last year",
                                 }}
                                 theme={{
-                                    dark: ["#0b1220", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                                    dark: ["#161616", "#3a3a3a", "#6b6b6b", "#a8a8a8", "#e0e0e0"],
                                 }}
                             />
                         </div>
