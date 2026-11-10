@@ -1,204 +1,202 @@
-export const navItems = [
-    { name: "About", link: "#about" },
-    { name: "Projects", link: "#projects" },
-    { name: "Resume", link: "/resume.pdf" },
-    { name: "Testimonials", link: "#testimonials" },
+export const profile = {
+  first: "Moncito",
+  last: "Hernandez",
+  role: "Full Stack Software Engineer",
+  location: "Manila, PH",
+  email: "moncitoglenn03@gmail.com",
+  linkedin: "https://www.linkedin.com/in/moncito-glenn-hernandez-238605261/",
+  github: "https://github.com/Moncito",
+  resume: "/resume.pdf",
+};
+
+export const nav = [
+  { label: "Work", target: "#work" },
+  { label: "Apps", target: "#apps" },
+  { label: "About", target: "#about" },
+  { label: "Contact", target: "#contact" },
 ];
 
-export const gridItems = [
-    {
-        id: 1,
-        title: "Building Through Collaboration",
-        description: "I design and develop with teamwork, clarity, and shared goals at the core of every project.",
-        className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
-        imgClassName: "w-full h-full",
-        titleClassName: "justify-end",
-        img: "/images/3.jpg",
-        spareImg: "",
-    },
-    {
-        id: 2,
-        title: "Anywhere",
-        description: "Comfortable working across teams, tools, and time zones with structured and reliable communication.",
-        className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-        imgClassName: "",
-        titleClassName: "justify-start",
-        img: "/images/1.jpg",
-        spareImg: "",
-    },
-    {
-        id: 3,
-        title: "My Technical Foundation",
-        description: "Modern web, mobile, and cloud technologies focused on performance, scalability, and clean architecture.",
-        className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-        imgClassName: "",
-        titleClassName: "justify-center",
-        img: "/images/5.jpg",
-        spareImg: "",
-    },
-    {
-        id: 4,
-        title: "Design with Purpose",
-        description: "I care deeply about detail, motion, and interfaces that feel intuitive and intentional.",
-        className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-        imgClassName: "",
-        titleClassName: "justify-start",
-        img: "/images/2.jpg",
-        spareImg: "",
-    },
-    {
-        id: 5,
-        title: "Turning Ideas into Systems",
-        description: "From concept to deployment—engineering solutions that are maintainable, scalable, and user-focused.",
-        className: "md:col-span-3 md:row-span-2",
-        imgClassName: "w-full h-full object-cover bottom-0",
-        titleClassName: "justify-center md:justify-start lg:justify-center",
-        img: "/images/4.jpg",
-        spareImg: "",
-    },
+export const statement =
+  "I build web platforms and mobile apps from Manila. Before I wrote production code I spent years in recruitment and outreach, so I build for the person on the other side of the screen.";
 
-    {
-        id: 6,
-        title: "Let’s Build Something Impactful",
-        description: "Open to collaborations, internships, freelance work, and meaningful tech projects.",
-        className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-        imgClassName: "",
-        titleClassName: "justify-center md:max-w-full text-center",
-        img: "",
-        spareImg: "",
-    },
+export const facts = [
+  { value: 7, pad: 2, suffix: "", label: "Projects in this index" },
+  { value: 21, pad: 2, suffix: "H", label: "Hackathon build, TrabaWHO" },
+  { value: 2027, pad: 4, suffix: "", label: "BSIT, National University Manila" },
 ];
 
-const ICONS = {
-    next: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg",
-    tailwind: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
-    typescript: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
-    react: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
-    gsap: "https://cdn.worldvectorlogo.com/logos/gsap.svg",
-    framer: "https://raw.githubusercontent.com/devicons/devicon/master/icons/framer/framer-original.svg",
-    three: "https://raw.githubusercontent.com/devicons/devicon/master/icons/threejs/threejs-original.svg",
-    sql: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
-    github: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
-    linkedin: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg",
-    twitter: "https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg"
-}
+export type WebProject = {
+  no: string;
+  title: string;
+  kind: string;
+  role: string;
+  summary: string;
+  points: string[];
+  image: string;
+  href: string;
+  host: string;
+};
 
-export const projects = [
-    {
-        id: 1,
-        title: "Luwas Travel & Tours",
-        des: "A comprehensive travel agency platform with dynamic booking and itinerary management.",
-        img: "/images/proj2.png",
-        iconLists: [ICONS.next, ICONS.tailwind, ICONS.typescript,],
-        link: "https://luwas-travel.tours/",
-    },
-    {
-        id: 2,
-        title: "AI Mock Interview",
-        des: "Intelligent career preparation platform utilizing AI to simulate realistic interview environments.",
-        img: "/images/proj1.png",
-        iconLists: [ICONS.react, ICONS.tailwind, ICONS.typescript, ICONS.three,],
-        link: "https://ai-mock-interview-swart-phi.vercel.app/",
-    },
-    {
-        id: 3,
-        title: "Luwas Mobile App",
-        des: "React Native companion to Luwas Travel, providing seamless booking on the go.",
-        img: "/images/proj3.png",
-        iconLists: [ICONS.react, ICONS.typescript, ICONS.framer],
-        link: "https://github.com/Moncito/luwas-mobile",
-    },
-    {
-        id: 4,
-        title: "Roomify 2.0",
-        des: "A.I First 2D Designer for Interior Design and Architecture",
-        img: "/images/proj4.png",
-        iconLists: [ICONS.next, ICONS.tailwind,],
-        link: "https://roomify-omega-orpin.vercel.app/",
-    },
+export const webProjects: WebProject[] = [
+  {
+    no: "01",
+    title: "EasyHire VA",
+    kind: "Recruitment platform",
+    role: "Full stack engineering",
+    summary:
+      "A recruitment platform for Filipino virtual assistants where every employer is checked by a person before a role goes live.",
+    points: ["Verified employer pipeline", "Job board and applications", "Shortlist, message, interview"],
+    image: "/images/work/easyhire.png",
+    href: "https://easyhireva.com",
+    host: "easyhireva.com",
+  },
+  {
+    no: "02",
+    title: "But First Coffee",
+    kind: "Brand experience",
+    role: "Design and development",
+    summary:
+      "A scroll-driven storefront for a specialty coffee label, from bean to roast to ritual, with sound and a staged loading sequence.",
+    points: ["Scroll-led storytelling", "Sound design toggle", "Product and roast catalogue"],
+    image: "/images/work/coffee.png",
+    href: "https://but-first-coffee-three.vercel.app",
+    host: "but-first-coffee-three.vercel.app",
+  },
+  {
+    no: "03",
+    title: "Roomify 2.0",
+    kind: "AI design tool",
+    role: "Design and development",
+    summary:
+      "An AI-first design environment. Upload a floor plan and get rendered visualisations of the space back.",
+    points: ["Floor plan upload", "AI-generated renders", "Community feed and tags"],
+    image: "/images/work/roomify.png",
+    href: "https://roomify-omega-orpin.vercel.app",
+    host: "roomify-omega-orpin.vercel.app",
+  },
+  {
+    no: "04",
+    title: "Luwas Travel",
+    kind: "Travel platform",
+    role: "Full stack engineering",
+    summary:
+      "A travel companion for the Philippines: curated destinations, personalised itineraries and booking in one place.",
+    points: ["Destination discovery", "Itinerary planning", "Promos and travel history"],
+    image: "/images/work/luwas.png",
+    href: "https://luwas-travel-app.vercel.app",
+    host: "luwas-travel-app.vercel.app",
+  },
 ];
 
-export const testimonials = [
-    {
-        quote:
-            "Working with Sainty was a great experience. He’s The Best, reliable, and delivered high-quality frontend work that brought our vision to life.",
-        name: "Michael Johnson",
-        title: "Director of AlphaStream Technologies",
-    },
-    {
-        quote:
-            "Working with this developer was a game-changer for our project. The attention to detail and the ability to translate complex requirements into beautiful, functional code was impressive.",
-        name: "Sarah Chen",
-        title: "Founder of TechVibe",
-    },
+export type AppProject = {
+  no: string;
+  slug: "trabawho" | "groove" | "luwas";
+  title: string;
+  kind: string;
+  summary: string;
+  tags: string[];
+  note?: string;
+  screen: string;
+  /** width / height of the visible screen area */
+  aspect: number;
+  /** percent of the screenshot hidden at top and bottom (system bars) */
+  crop: { top: number; bottom: number };
+  href: string;
+  theme: { bg: string; fg: string; accent: string };
+};
+
+export const appProjects: AppProject[] = [
+  {
+    no: "05",
+    slug: "trabawho",
+    title: "TrabaWHO",
+    kind: "On-device AI booking",
+    summary:
+      "Describe the problem at home in Taglish. A language model running on the phone turns it into a bookable job, and it keeps working in airplane mode.",
+    tags: ["On-device LLM", "Offline-first sync", "React Native", "TypeScript"],
+    note: "Built in 21 hours with Team 404 at the AppBuildersPH Hackathon 2026.",
+    screen: "/images/apps/trabawho.webp",
+    aspect: 900 / 1810,
+    crop: { top: 5, bottom: 4.5 },
+    href: "https://github.com/Moncito/TrabaWHO",
+    theme: { bg: "#06184a", fg: "#ffffff", accent: "#f5a31a" },
+  },
+  {
+    no: "06",
+    slug: "groove",
+    title: "Groove",
+    kind: "Community habit tracker",
+    summary:
+      "Log what you did today, from running to reading to shipping code, and watch it fill a contribution grid. Then share the streak with a community feed.",
+    tags: ["Expo", "React Native", "Supabase", "Skia", "Reanimated"],
+    screen: "/images/apps/groove.webp",
+    aspect: 1067 / 2000,
+    crop: { top: 0, bottom: 0 },
+    href: "https://github.com/Moncito/groove",
+    theme: { bg: "#f5f2ec", fg: "#12100c", accent: "#f08a2e" },
+  },
+  {
+    no: "07",
+    slug: "luwas",
+    title: "Luwas Native",
+    kind: "Travel companion",
+    summary:
+      "The mobile side of Luwas. Browse destinations, book trips and manage itineraries, with in-app chat support, weather and traveller reviews.",
+    tags: ["Expo", "React Native", "Firebase", "OAuth"],
+    screen: "/images/apps/luwas-native.webp",
+    aspect: 921 / 2000,
+    crop: { top: 0, bottom: 0 },
+    href: "https://github.com/Moncito/luwas-native",
+    theme: { bg: "#1b1a14", fg: "#f3efe6", accent: "#3b6cf6" },
+  },
 ];
 
-export const companies = [
-    {
-        id: 1,
-        name: "firebase",
-        img: "/svg/firebase.svg",
-        nameImg: "",
-    },
-    {
-        id: 2,
-        name: "appwrite",
-        img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/appwrite/appwrite-original.svg",
-        nameImg: "",
-    },
-    {
-        id: 3,
-        name: "vercel",
-        img: "/svg/vercel.svg",
-        nameImg: "",
-    },
+export const experience = [
+  {
+    period: "Current",
+    title: "Full Stack Software Engineer",
+    org: "EasyHire VA Solutions",
+    desc: "Building and maintaining a full-stack recruitment platform: responsive web apps, secure backend services, databases and performance.",
+  },
+  {
+    period: "2024 — Now",
+    title: "Freelance Mobile Developer",
+    org: "Independent",
+    desc: "Mobile apps with authentication flows, profile management, navigation and data-driven interfaces, wired to backend services and APIs.",
+  },
+  {
+    period: "2023 — Now",
+    title: "Freelance Web Developer",
+    org: "Independent",
+    desc: "Web applications in Next.js, TypeScript, Tailwind CSS, Firebase and Appwrite. Auth systems, admin dashboards, booking workflows, API integrations.",
+  },
+  {
+    period: "",
+    title: "Customer Support Agent",
+    org: "Amazon",
+    desc: "Resolved order, account, return and refund issues across chat, email and phone.",
+  },
+  {
+    period: "2024",
+    title: "Outreach Manager",
+    org: "WorkEdge",
+    desc: "Built and ran structured outreach strategies and events to connect with clients and partners.",
+  },
+  {
+    period: "2023 — 2024",
+    title: "Outreach Consultant",
+    org: "WorkEdge",
+    desc: "Advised on outreach planning and analysed performance data to improve response rates.",
+  },
+  {
+    period: "2021 — 2022",
+    title: "Recruitment Specialist",
+    org: "AddWorth",
+    desc: "Sourced candidates with LinkedIn Recruiter, Boolean and X-Ray search.",
+  },
 ];
 
-export const workExperience = [
-    {
-        id: 1,
-        title: "Outreach Consult...",
-        desc: "Strategic market expansion and client acquisition infrastructure designer.",
-        className: "md:col-span-2",
-        thumbnail: "/images/workedge.jpg",
-    },
-    {
-        id: 2,
-        title: "Outreach Manager",
-        desc: "Led cross-functional teams to scale reach and optimize conversion funnels.",
-        className: "md:col-span-2",
-        thumbnail: "/images/workedge.jpg",
-    },
-    {
-        id: 3,
-        title: "Freelance Fullstack Developer",
-        desc: "Architecting end-to-end digital solutions with modern frameworks and robust backends.",
-        className: "md:col-span-2",
-        thumbnail: ICONS.next,
-    },
-    {
-        id: 4,
-        title: "Freelance Mobile Developer",
-        desc: "Crafting native and cross-platform mobile experiences with a focus on motion and performance.",
-        className: "md:col-span-1",
-        thumbnail: ICONS.react,
-    },
-];
-
-export const socialMedia = [
-    {
-        id: 1,
-        img: ICONS.github,
-        link: "https://github.com/Moncito"
-    },
-    {
-        id: 2,
-        img: "/images/threads.png",
-        link: "https://www.threads.com/@saints_aintdead"
-    },
-    {
-        id: 3,
-        img: ICONS.linkedin,
-        link: "https://www.linkedin.com/in/moncito-glenn-hernandez-238605261/"
-    },
+export const stack = [
+  ["Next.js", "React", "TypeScript", "Tailwind CSS", "GSAP", "Node.js"],
+  ["React Native", "Expo", "Flutter", "Firebase", "Supabase", "Appwrite"],
 ];

@@ -1,16 +1,14 @@
-# Sainty Hernandez — Portfolio
+# Moncito Hernandez — Portfolio
 
-A personal portfolio website built with **Next.js 16**, **TypeScript**, and **Tailwind CSS v4**, featuring rich animations powered by GSAP and Framer Motion.
+A personal portfolio website built with **Next.js 16**, **TypeScript**, and **Tailwind CSS v4**, with scroll-driven animation powered by GSAP and Lenis.
 
 ## Tech Stack
 
 - **Framework** — Next.js 16 (App Router)
 - **Language** — TypeScript
 - **Styling** — Tailwind CSS v4
-- **Animations** — GSAP (with ScrollTrigger & SplitType), Framer Motion
-- **Smooth Scroll** — Lenis (`@studio-freight/lenis`)
-- **Icons** — Lucide React, React Icons
-- **GitHub Activity** — `react-github-calendar`
+- **Animations** — GSAP (ScrollTrigger, SplitText, CustomEase)
+- **Smooth Scroll** — Lenis (`lenis`)
 
 ## Features
 
