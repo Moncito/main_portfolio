@@ -1,44 +1,44 @@
 "use client";
 import { useEffect, useState } from "react";
-import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
-import RecentProjects from "@/components/RecentProjects";
-import { FloatingNav } from "@/components/ui/FloatingNav";
-import { navItems } from "@/data";
-import Clients from "@/components/Clients";
-import Experience from "@/components/Experience";
-import Footer from "@/components/Footer";
+import { ScrollTrigger } from "@/lib/gsap";
 import Preloader from "@/components/Preloader";
-import CustomCursor from "@/components/CustomCursor";
+import Header from "@/components/Header";
+import GridOverlay from "@/components/GridOverlay";
+import Cursor from "@/components/Cursor";
+import Hero from "@/components/Hero";
+import Statement from "@/components/Statement";
+import Work from "@/components/Work";
+import Apps from "@/components/Apps";
+import Experience from "@/components/Experience";
+import Marquee from "@/components/Marquee";
+import Contact from "@/components/Contact";
+
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [ready, setReady] = useState(false);
+
+  // Children have mounted and sized the headline, so measure everything once.
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, []);
 
   return (
-    <main className="relative bg-[#f8f8f8] w-full min-h-screen overflow-x-hidden">
-      <CustomCursor />
-      <div className="fixed inset-0 fractal-noise pointer-events-none z-[9998]" />
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
+    <>
+      <Preloader onComplete={() => setReady(true)} />
+      <Cursor />
+      <GridOverlay ready={ready} />
+      <Header ready={ready} />
 
-      <FloatingNav navItems={navItems} />
+      <main className="relative z-10 bg-paper">
+        <Hero ready={ready} />
+        <Statement />
+        <Work />
+        <Apps />
+        <Experience />
+        <Marquee />
+        <div id="page-end" aria-hidden />
+      </main>
 
-      <div className="flex flex-col items-center">
-        <Hero />
-
-        <div className="max-w-7xl w-full px-5 sm:px-10 md:-mt-3">
-          <Grid />
-        </div>
-      </div>
-
-      <RecentProjects />
-
-      <div className="flex flex-col items-center">
-        <div className="max-w-7xl w-full px-5 sm:px-10">
-          <Clients />
-          <Experience />
-        </div>
-
-        <Footer />
-      </div>
-    </main>
+      <Contact />
+    </>
   );
 }

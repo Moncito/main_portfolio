@@ -1,44 +1,40 @@
-import type { Metadata } from "next";
-import { Syne, Inter, Playfair_Display } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter_Tight, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
-const syne = Syne({
-  variable: "--font-syne",
+const display = Inter_Tight({
+  variable: "--ff-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const mono = Geist_Mono({
+  variable: "--ff-mono",
   subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["italic", "normal"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Sainty Hernandez | Portfolio",
-  description: "Digital Architect & Creative Developer",
+  title: "Moncito Hernandez — Full Stack Software Engineer",
+  description:
+    "Moncito Hernandez is a full stack software engineer in Manila building web platforms and mobile apps. Selected work, 2026.",
+  openGraph: {
+    title: "Moncito Hernandez — Index 2026",
+    description: "Full stack software engineer in Manila. Web platforms and mobile apps.",
+    type: "website",
+  },
 };
 
-import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
+export const viewport: Viewport = {
+  themeColor: "#e4e3dd",
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${syne.variable} ${inter.variable} ${playfair.variable} font-sans antialiased bg-[#f5f5f7] text-[#0a0a0a]`}
-      >
-        <SmoothScrollWrapper>
-          {children}
-        </SmoothScrollWrapper>
+      <body className={`${display.variable} ${mono.variable}`}>
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
